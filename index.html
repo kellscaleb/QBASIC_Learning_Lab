@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A friendly browser-based QBASIC learning lab.">
+  <title>QBASIC Learning Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><span class="logo">Q&gt;</span><strong>QBASIC Learning Lab</strong></div>
+    <div class="status" id="status" aria-live="polite">Ready</div>
+  </header>
+
+  <nav class="tabs" aria-label="Main sections">
+    <button class="tab active" data-view="learn">Learn</button>
+    <button class="tab" data-view="code">Code</button>
+    <button class="tab" data-view="graphics">Graphics</button>
+  </nav>
+
+  <main>
+    <section class="view active" id="learn-view">
+      <div class="hero panel">
+        <p class="eyebrow">TYPE · LEARN · RUN</p>
+        <h1>Learn QBASIC by doing.</h1>
+        <p>Practice a short program character by character, then run it in the built-in interpreter.</p>
+      </div>
+      <div class="lesson-layout">
+        <aside class="panel lessons">
+          <h2>Lessons</h2>
+          <div id="lesson-list"></div>
+        </aside>
+        <section class="panel tutor">
+          <div class="section-head"><div><p class="eyebrow" id="lesson-number"></p><h2 id="lesson-title"></h2></div><button class="secondary" id="restart-lesson">Restart</button></div>
+          <p id="lesson-description"></p>
+          <pre class="reference-code" id="reference-code" aria-label="Program to type"></pre>
+          <label for="tutor-input">Type the highlighted program</label>
+          <textarea id="tutor-input" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+          <div class="progress-row"><div class="progress"><div id="tutor-progress"></div></div><span id="tutor-score">0%</span></div>
+          <p class="hint" id="tutor-hint">Tip: type exactly what you see, including spaces and punctuation.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="code-view">
+      <div class="workspace">
+        <aside class="panel program-list">
+          <h2>Examples</h2><div id="program-list"></div>
+          <hr><h2>Saved programs</h2><div id="saved-list"></div>
+        </aside>
+        <section class="editor-panel panel">
+          <div class="editor-toolbar">
+            <label>Program name <input id="program-name" value="Untitled program" maxlength="60"></label>
+            <div class="tool-actions">
+              <button class="primary" id="run-code">▶ Run</button>
+              <button id="stop-code">■ Stop</button>
+              <button id="new-code">New</button>
+              <button id="save-code">Save</button>
+              <button id="download-code">Download</button>
+              <label class="file-button">Open<input id="open-code" type="file" accept=".bas,.txt,text/plain"></label>
+            </div>
+          </div>
+          <div class="editor-wrap"><div class="line-numbers" id="line-numbers" aria-hidden="true">1</div><textarea id="code-editor" spellcheck="false" aria-label="QBASIC code"></textarea></div>
+          <div class="output-head"><h2>Output</h2><button class="secondary" id="clear-output">Clear</button></div>
+          <pre class="terminal" id="output" aria-live="polite">QBASIC Learning Lab
+Ready. Choose an example or write a program, then select Run.</pre>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="graphics-view">
+      <div class="graphics-layout">
+        <section class="panel graphics-stage"><div class="canvas-frame"><canvas id="graphics-canvas" width="640" height="400"></canvas></div><p class="hint">The canvas updates when a program uses PSET, LINE, CIRCLE, PAINT, or CLS.</p></section>
+        <aside class="panel graphics-controls">
+          <h2>Graphics playground</h2>
+          <p>Generate a starter program, run it, then change the numbers in the Code tab.</p>
+          <button class="primary graphic-example" data-example="shapes">Shapes</button>
+          <button class="graphic-example" data-example="stars">Star field</button>
+          <button class="graphic-example" data-example="rainbow">Rainbow</button>
+          <button class="danger" id="clear-canvas">Clear canvas</button>
+          <hr><h3>Color palette</h3><div class="palette" id="palette"></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer>Runs entirely in your browser · Programs are stored only on this device.</footer>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
